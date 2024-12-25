@@ -8,7 +8,7 @@ for($i=0;$i<10;$i++){
     $Ans=$conn->query($SQL)->fetch_assoc();
     if($Ans['Answer']!=$_SESSION['Ans'][$i]){
         $Wrongs[]=[
-            "No"=>$i,
+            "No"=>$i+1,
             "Wrong"=>$_SESSION['Ans'][$i],
             "Correct"=>$Ans['Answer']
         ];
