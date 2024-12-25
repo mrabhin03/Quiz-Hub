@@ -23,6 +23,7 @@
             }
 
             $QID=$_SESSION['QIDs'][$Qnum];
+            echo $_SESSION['QIDs'][$Qnum];
 
             $sql="SELECT * FROM `question` WHERE QID ='$QID';";
             $Question=$conn->query($sql)->fetch_assoc();
