@@ -13,7 +13,6 @@ for($i=0;$i<10;$i++){
             "Correct"=>$Ans['Answer']
         ];
     }
-    
 }
 ?>
 <html lang="en">

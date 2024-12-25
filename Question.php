@@ -12,6 +12,7 @@ if(isset($_POST['QuestionNumber'])){
 if($Qnum==10){
     header("location:Finish.php");
 }
+
 $QID=$_SESSION['QIDs'][$Qnum];
 
 ?>
