@@ -1,21 +1,4 @@
 <!DOCTYPE html>
-<?php 
-session_start();
-include("../Connection.php");
-if(isset($_POST['QuestionNumber'])){
-    $Qnum=$_POST['QuestionNumber'];
-    $_SESSION['Ans'][$Qnum-1]=$_POST['option'];
-}else{
-    $Qnum=0;
-    $_SESSION['Ans'][0]="";
-}
-if($Qnum==10){
-    header("location:Finish.php");
-}
-
-$QID=$_SESSION['QIDs'][$Qnum];
-
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +8,22 @@ $QID=$_SESSION['QIDs'][$Qnum];
 </head>
 <body>
     <div class="QuizContainer">
-        <?php
+        <?php 
+            session_start();
+            include("../Connection.php");
+            if(isset($_POST['QuestionNumber'])){
+                $Qnum=$_POST['QuestionNumber'];
+                $_SESSION['Ans'][$Qnum-1]=$_POST['option'];
+            }else{
+                $Qnum=0;
+                $_SESSION['Ans'][0]="";
+            }
+            if($Qnum==10){
+                header("location:Finish.php");
+            }
+
+            $QID=$_SESSION['QIDs'][$Qnum];
+
             $sql="SELECT * FROM `question` WHERE QID ='$QID';";
             $Question=$conn->query($sql)->fetch_assoc();
         ?>

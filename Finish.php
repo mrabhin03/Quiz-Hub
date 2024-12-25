@@ -1,20 +1,5 @@
 <!DOCTYPE html>
-<?php 
-session_start();
-include("../Connection.php");
-$Wrongs=[];
-for($i=0;$i<10;$i++){
-    $SQL="SELECT * FROM `answers` WHERE QID='".$_SESSION['QIDs'][$i]."'";
-    $Ans=$conn->query($SQL)->fetch_assoc();
-    if($Ans['Answer']!=$_SESSION['Ans'][$i]){
-        $Wrongs[]=[
-            "No"=>$i+1,
-            "Wrong"=>$_SESSION['Ans'][$i],
-            "Correct"=>$Ans['Answer']
-        ];
-    }
-}
-?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +9,22 @@ for($i=0;$i<10;$i++){
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <?php 
+    session_start();
+    include("../Connection.php");
+    $Wrongs=[];
+    for($i=0;$i<10;$i++){
+        $SQL="SELECT * FROM `answers` WHERE QID='".$_SESSION['QIDs'][$i]."'";
+        $Ans=$conn->query($SQL)->fetch_assoc();
+        if($Ans['Answer']!=$_SESSION['Ans'][$i]){
+            $Wrongs[]=[
+                "No"=>$i+1,
+                "Wrong"=>$_SESSION['Ans'][$i],
+                "Correct"=>$Ans['Answer']
+            ];
+        }
+    }
+    ?>
     <div class="ResultContainer">
         <div class="UpperSection">
             <div class="PieChartContainer">
