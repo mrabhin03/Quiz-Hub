@@ -23,7 +23,37 @@ body, html {
     flex-direction: column;
     border: 2px solid white;
 }
-
+.Player{
+    background-color: #00ff51 !important;
+}
+.UserData table{
+    border-collapse: collapse;
+}
+.UserData table td{
+    padding: 8px 8px;
+    font-size: 17px;
+}
+.UserData table tr>td:nth-child(2){
+    text-align: left;
+    padding-left: 30px;
+}
+.UserData table tr:nth-child(odd){
+    background-color: rgb(247, 247, 247);
+}
+.MainScore table tr:nth-child(1){
+    background-color: rgba(0, 255, 89, 0.05);
+}
+.MainScore table tr:nth-child(2){
+    background-color: rgba(225, 255, 0, 0.05);
+}
+.MainScore table tr:nth-child(3){
+    background-color: rgba(255, 25, 0, 0.05);
+}
+.indexchecks{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 .UserData h1 {
     font-size: 2rem;
     color: #333333;
@@ -108,16 +138,20 @@ body, html {
     margin-bottom: 10px;
     padding: 10px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: all 0.4s;
 }
 
 .Options label:hover {
     background: #f0f8ff;
-    transform: translateY(-2px);
 }
 
 .Options input[type="radio"] {
     margin-right: 10px;
+    display: none;
+}
+.active{
+    background-color: rgb(64, 139, 230) !important;
+    color: white !important;
 }
 
 .ContinueButton {

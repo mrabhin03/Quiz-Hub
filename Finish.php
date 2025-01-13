@@ -14,7 +14,7 @@
     include("../Connection.php");
     $Wrongs=[];
     for($i=0;$i<10;$i++){
-        $SQL="SELECT * FROM `answers` WHERE QID='".$_SESSION['QIDs'][$i]."'";
+        $SQL="SELECT * FROM `question` WHERE QID='".$_SESSION['QIDs'][$i]."'";
         $Ans=$conn->query($SQL)->fetch_assoc();
         if($Ans['Answer']!=$_SESSION['Ans'][$i]){
             $Wrongs[]=[
@@ -24,7 +24,25 @@
             ];
         }
     }
+    if(!$_SESSION['Added']){
+        $usercheck="SELECT ID FROM scores WHERE Name='".$_SESSION['UserName']."'";
+        $data=$conn->query($usercheck);
+        if($data->num_rows==0){
+            $sqlvalue="INSERT INTO scores(`Name`,`TotalAttemt`,`TotalWrong`,`TotalScore`) VALUES('".$_SESSION['UserName']."',1,'".(count($Wrongs))."','".(10-count($Wrongs))."')";
+        }else{
+            $id=$data->fetch_assoc()['ID'];
+            $sqlvalue="UPDATE scores SET TotalScore=TotalScore+(".(10-count($Wrongs))."), TotalAttemt=TotalAttemt+1,TotalWrong=TotalWrong+(".(count($Wrongs)).") WHERE ID='$id'";
+        }
+        $conn->query($sqlvalue);
+        $_SESSION['Added']=true;
+    }
+    
     ?>
+    <?php
+        $Scroes="SELECT * FROM scores ORDER BY TotalScore DESC";
+        $data=$conn->query($Scroes);
+    ?>
+
     <div class="ResultContainer">
         <div class="UpperSection">
             <div class="PieChartContainer">
@@ -35,6 +53,7 @@
                 <p><strong>Marks:</strong> <?=10-count($Wrongs)?> / 10</p>
             </div>
         </div>
+        <a href="index.php"><button class='subButton' style='margin-top:10px;'>Retry</button></a>
         <div class="WrongAnswersSection">
             <h2>Incorrect Answers</h2>
             <ul class="WrongAnswersList">
@@ -49,7 +68,25 @@
             ?>
             </ul>
         </div>
+        <form class='UserData' style='padding:1rem 0rem;max-width:100%;width:100%; margin-top:20px;box-shadow:0 0 0;' method='POST' action='GetQuestions.php'>
+            <h1 style='font-size:25px;margin-top:5px;'>Score Board</h1>
+            <table>
+                <?php
+                $i=1;
+                while($row=$data->fetch_assoc()){
+                    ?>
+                    <tr <?=($row['Name']==$_SESSION['UserName'])?"class='Player'":"";?>>
+                        <td><?=$i++?></td>
+                        <td><?=$row['Name']?></td>
+                        <td><?=$row['TotalScore']?></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
+        </form>
     </div>
+    
 
     <script>
         const ctx = document.getElementById('resultChart').getContext('2d');

@@ -28,23 +28,23 @@
             $Question=$conn->query($sql)->fetch_assoc();
         ?>
         <h1>Quiz Time</h1>
-        <p class="Question"><?=$Question['Question'];?></p>
+        <p class="Question"><?=($Qnum+1).". ".$Question['Question'];?></p>
         <form class="Options" method='POST' onsubmit="return SubmitQuestion()">
             <input type="hidden" name='QuestionNumber' id="AnswerNext" value="<?= $Qnum;?>">
             <label>
-                <input type="radio" name="option" required value="<?=$Question['Option1'];?>">
+                <input type="radio" name="option" onclick='ButtonCheck(this)' required value="<?=$Question['Option1'];?>">
                 <?=$Question['Option1'];?>
             </label>
             <label>
-                <input type="radio" name="option" required value="<?=$Question['Option2'];?>">
+                <input type="radio" name="option" onclick='ButtonCheck(this)' required value="<?=$Question['Option2'];?>">
                 <?=$Question['Option2'];?>
             </label>
             <label>
-                <input type="radio" name="option" required value="<?=$Question['Option3'];?>">
+                <input type="radio" name="option" onclick='ButtonCheck(this)' required value="<?=$Question['Option3'];?>">
                 <?=$Question['Option3'];?>
             </label>
             <label>
-                <input type="radio" name="option" required value="<?=$Question['Option4'];?>">
+                <input type="radio" name="option" onclick='ButtonCheck(this)' required value="<?=$Question['Option4'];?>">
                 <?=$Question['Option4'];?>
             </label>
             <button type="submit" class="ContinueButton">Continue</button>
@@ -55,6 +55,11 @@
             object=document.getElementById('AnswerNext');
             object.value=parseInt(object.value)+1;
             return true;
+        }
+        function ButtonCheck(object){
+            Prevobjects = document.querySelector(".active");
+            if(Prevobjects)Prevobjects.classList.remove('active')
+            object.parentNode.classList.add('active')
         }
     </script>
 </body>

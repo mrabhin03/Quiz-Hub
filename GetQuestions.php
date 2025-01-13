@@ -13,5 +13,6 @@ include("../Connection.php");
     $_SESSION['QIDs']=$Qu;
     $_SESSION['Ans']=[];
     $_SESSION['UserName']=$_POST['UserName'];
+    $_SESSION['Added']=false;
     header("location:Question.php");
 ?>
