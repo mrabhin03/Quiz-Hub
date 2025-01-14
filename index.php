@@ -13,7 +13,7 @@ $data=$conn->query($Scroes);
 </head>
 <body>
     <div class='indexchecks'>
-        <form class='UserData MainScore' style='padding:1rem 2rem;' method='POST' action='GetQuestions.php'>
+        <form class='UserData MainScore' style='padding:1rem 2rem;'>
             <h1 style='font-size:25px;margin-top:5px;'>Score Board</h1>
             <table>
                 <?php
@@ -30,14 +30,24 @@ $data=$conn->query($Scroes);
                 ?>
             </table>
         </form>
-        <form class='UserData' method='POST' action='GetQuestions.php'>
+        <form class='UserData' method='POST' action='GetQuestions.php' onsubmit="return SubmitUser()">
             <h1>Welcome</h1>
             <div>
                 <label for="UserName">Your name</label>
-                <input type="text" name="UserName"  placeholder="Enter Your Name" required>
+                <input type="text" name="UserName" id="User"  placeholder="Enter Your Name" required>
             </div>
             <button class='subButton'>Continue</button>
         </form>
     </div>
+    <script>
+        function SubmitUser(){
+            Uvalue=document.getElementById("User").value;
+            if(Uvalue.trim()==''){
+                alert('Enter the User Name')
+                return false
+            }
+            return true
+        }
+    </script>
 </body>
 </html>
