@@ -15,7 +15,8 @@ $data=$conn->query($Scroes);
     <div class='indexchecks' >
         <div class='UserData MainScore' >
             <h1 style='font-size:25px;margin-top:5px; display:flex;align-item:center;justify-content:space-between;;'>
-                <a href="index.php"><ion-icon name="arrow-back-outline"></ion-icon></a>Score Board
+                <a href="index.php"><ion-icon name="arrow-back-outline"></ion-icon></a>
+                Score Board
                 <ion-icon style='opacity:0;' name="arrow-back-outline" i></ion-icon>
             </h1>
             <table>

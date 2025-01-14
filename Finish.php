@@ -19,12 +19,17 @@
         if($Ans['Answer']!=$_SESSION['Ans'][$i]){
             $Wrongs[]=[
                 "No"=>$i+1,
+                "Qns"=>$Ans['Question'],
                 "Wrong"=>$_SESSION['Ans'][$i],
                 "Correct"=>$Ans['Answer']
             ];
         }
     }
     if(!$_SESSION['Added']){
+        for($i=0;$i<10;$i++){
+            $updateQns="UPDATE question SET Count=Count+1 WHERE QID='".$_SESSION['QIDs'][$i]."'";
+            $conn->query($updateQns);
+        }
         $usercheck="SELECT ID FROM scores WHERE Name='".$_SESSION['UserName']."'";
         $data=$conn->query($usercheck);
         if($data->num_rows==0){
@@ -62,7 +67,7 @@
                     echo"<li>No Wrong Answers</li>";
                 }
                 foreach ($Wrongs as $wrong) {?>
-                <li>Question <?= $wrong['No']?>: <strong>Your answer:</strong> <?= $wrong['Wrong']?>, <strong>Correct answer:</strong> <?= $wrong['Correct']?></li>
+                <li><b>Question <?= $wrong['No']."</b>: ".$wrong['Qns']?><br> <strong>Your answer:</strong> <?= $wrong['Wrong']?>, <br> <strong>Correct answer:</strong> <?= $wrong['Correct']?></li>
             <?php
             }
             ?>

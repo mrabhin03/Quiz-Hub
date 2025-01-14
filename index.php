@@ -39,7 +39,7 @@ $data=$conn->query($Scroes);
                 <label for="UserName">Your name</label>
                 <input type="text" name="UserName" id="User"  placeholder="Enter Your Name" required>
             </div>
-            <button class='subButton'>Start Quiz</button>
+            <button class='subButton' >Start Quiz <ion-icon name="arrow-forward-outline"></ion-icon></button>
         </form>
     </div>
     <script>
@@ -52,5 +52,7 @@ $data=$conn->query($Scroes);
             return true
         }
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

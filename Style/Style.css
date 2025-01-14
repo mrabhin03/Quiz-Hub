@@ -94,6 +94,13 @@ body, html {
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+a{
+    text-decoration: none;
 }
 
 .subButton:hover {
