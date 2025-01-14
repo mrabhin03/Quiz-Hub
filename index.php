@@ -39,7 +39,7 @@ $data=$conn->query($Scroes);
                 <label for="UserName">Your name</label>
                 <input type="text" name="UserName" id="User"  placeholder="Enter Your Name" required>
             </div>
-            <button class='subButton'>Continue</button>
+            <button class='subButton'>Start Quiz</button>
         </form>
     </div>
     <script>
