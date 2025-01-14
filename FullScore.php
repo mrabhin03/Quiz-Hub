@@ -1,6 +1,6 @@
 <?php
 include("../Connection.php");
-$Scroes="SELECT * FROM scores ORDER BY TotalScore DESC LIMIT 3";
+$Scroes="SELECT * FROM scores ORDER BY TotalScore DESC";
 $data=$conn->query($Scroes);
 ?>
 <!DOCTYPE html>
@@ -12,9 +12,12 @@ $data=$conn->query($Scroes);
     <link rel="stylesheet" href="Style/Style.css?v=<?= time();?>">
 </head>
 <body>
-    <div class='indexchecks'>
-        <div class='UserData MainScore' style='padding:1rem 2rem;'>
-            <h1 style='font-size:25px;margin-top:5px;'>Score Board</h1>
+    <div class='indexchecks' >
+        <div class='UserData MainScore' >
+            <h1 style='font-size:25px;margin-top:5px; display:flex;align-item:center;justify-content:space-between;;'>
+                <a href="index.php"><ion-icon name="arrow-back-outline"></ion-icon></a>Score Board
+                <ion-icon style='opacity:0;' name="arrow-back-outline" i></ion-icon>
+            </h1>
             <table>
                 <?php
                 $i=1;
@@ -28,19 +31,8 @@ $data=$conn->query($Scroes);
                     <?php
                 }
                 ?>
-                <tr>
-                    <td colspan='3'><a href="FullScore.php"><Button class='subButton' style='padding:5px;'>View Full Score</Button></a></td>
-                </tr>
             </table>
         </div>
-        <form class='UserData' method='POST' action='GetQuestions.php' onsubmit="return SubmitUser()">
-            <h1>Welcome</h1>
-            <div>
-                <label for="UserName">Your name</label>
-                <input type="text" name="UserName" id="User"  placeholder="Enter Your Name" required>
-            </div>
-            <button class='subButton'>Continue</button>
-        </form>
     </div>
     <script>
         function SubmitUser(){
@@ -52,5 +44,7 @@ $data=$conn->query($Scroes);
             return true
         }
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
