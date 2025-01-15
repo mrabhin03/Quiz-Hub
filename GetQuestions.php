@@ -12,7 +12,7 @@ include("../Connection.php");
     }
     $_SESSION['QIDs']=$Qu;
     $_SESSION['Ans']=[];
-    $_SESSION['UserName']=$_POST['UserName'];
+    $_SESSION['UserName']=(isset($_COOKIE['User']))?$_COOKIE['User']:$_POST['UserName'];
     $_SESSION['Added']=false;
     header("location:Question.php");
 ?>

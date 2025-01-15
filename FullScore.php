@@ -1,6 +1,6 @@
 <?php
 include("../Connection.php");
-$Scroes="SELECT * FROM scores ORDER BY TotalScore DESC";
+$Scroes="SELECT * FROM scores WHERE  Name!='' ORDER BY TotalScore DESC";
 $data=$conn->query($Scroes);
 ?>
 <!DOCTYPE html>

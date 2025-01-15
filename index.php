@@ -1,6 +1,6 @@
 <?php
 include("../Connection.php");
-$Scroes="SELECT * FROM scores ORDER BY TotalScore DESC LIMIT 3";
+$Scroes="SELECT * FROM scores WHERE Name!='' ORDER BY TotalScore DESC LIMIT 3";
 $data=$conn->query($Scroes);
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ $data=$conn->query($Scroes);
 <body>
     <div class='indexchecks'>
         <div class='UserData MainScore' style='padding:1rem 2rem;'>
-            <h1 style='font-size:25px;margin-top:5px;'>Score Board</h1>
+            <h1 style='font-size:25px;margin-top:0px;'>Score Board</h1>
             <table>
                 <?php
                 $i=1;
@@ -34,10 +34,10 @@ $data=$conn->query($Scroes);
             </table>
         </div>
         <form class='UserData' method='POST' action='GetQuestions.php' onsubmit="return SubmitUser()">
-            <h1>Welcome</h1>
+            <h1 style='margin-top:0px;'>Welcome</h1>
             <div>
                 <label for="UserName">Your name</label>
-                <input type="text" name="UserName" id="User"  placeholder="Enter Your Name" required>
+                <input type="text" name="UserName" id="User"  placeholder="Enter Your Name" required <?=(isset($_COOKIE['User'])? "value='".$_COOKIE['User']."' readonly":"")?> >
             </div>
             <button class='subButton' >Start Quiz <ion-icon name="arrow-forward-outline"></ion-icon></button>
         </form>

@@ -38,6 +38,7 @@
             $id=$data->fetch_assoc()['ID'];
             $sqlvalue="UPDATE scores SET TotalScore=TotalScore+(".(10-count($Wrongs))."), TotalAttemt=TotalAttemt+1,TotalWrong=TotalWrong+(".(count($Wrongs)).") WHERE ID='$id'";
         }
+        setcookie('User',$_SESSION['UserName'],time()+(86400*3),'/');
         $conn->query($sqlvalue);
         $_SESSION['Added']=true;
     }
