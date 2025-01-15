@@ -59,7 +59,7 @@
                 <p><strong>Marks:</strong> <?=10-count($Wrongs)?> / 10</p>
             </div>
         </div>
-        <a href="index.php"><button class='subButton' style='margin-top:10px;'>Retry</button></a>
+        <a href="index.php"><button class='subButton' style='margin-top:20px; background:#ee0000; font-size:20px;'>Try Again <ion-icon name="refresh-outline"></ion-icon></button></a>
         <div class="WrongAnswersSection">
             <h2>Incorrect Answers</h2>
             <ul class="WrongAnswersList">
@@ -115,5 +115,7 @@
             }
         });
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
